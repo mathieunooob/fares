@@ -1,0 +1,13 @@
+.jumbotron{
+    background-color: #4C4C4C;
+    color: white;
+}
+
+span{
+    color: #213B77;
+    font-size: 1.3rem;
+}
+
+.btn{
+    background-color: #213B77;
+}

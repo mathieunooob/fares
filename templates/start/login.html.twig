@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Connexion {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styleLogin.css') }} ">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="d-flex">
+                <div class="flex-column">
+                    <h1>Page de connexion</h1>
+                    <p>Connectez-vous à votre compte et gérer vos documents et leurs signatures numériques</p>                
+                </div>
+                <div class="flex-row mx-auto align-self-center">
+                    <img src="./img/tp.png" alt="logo" style="width: 75px; height: 45px"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form>
+            <div class="form-group row">
+                <label for="username" class="col-12 col-md-8 offset-md-2">Nom : </label>
+                <i id="usernameI" class='far fa-user-circle d-none d-sm-block'></i>
+                <input class="form-control form-control-lg col-12 col-md-8 offset-md-2" type="text" id="username" placeholder="Nom" />
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-12 col-md-8 offset-md-2">Adresse mail :</label>
+                <i id="emailI" class='far fa-envelope d-none d-sm-block'></i>
+                <input class="form-control form-control-lg col-12 col-md-8 offset-md-2" type="email" id="email" aria-describedby="emailHelp" placeholder="Mail" />
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-12 col-md-8 offset-md-2">Mot de passe :</label>
+                <i id="passwordI" class='fas fa-key d-none d-sm-block'></i>
+                <input class="form-control form-control-lg col-12 col-md-8 offset-md-2" type="password" id="password" placeholder="Mot de passe" />
+            </div>
+            <p class="need-help text-right">
+                <a href="{{ path('reinitPwd') }}" class="text-link">J'ai oublié mon mot de passe</a>
+            </p>
+            <div class="row justify-content-center">
+                <a href="# {#{{ path('home') }}#} " class="btn btn-primary btn-lg mt-4 mb-2 btn-block w-50 col-12 col-md-8 offset-md-2" role="button">
+                    Poursuivre
+                </a>
+                <a href="{{ path('start') }}" class="btn btn-danger btn-lg mt-4 mb-2 btn-block w-50 col-12 col-md-8 offset-md-2" role="button">
+                    Annuler
+                </a>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col col-sm-8 offset-sm-2">
+                <div class="card mt-5">
+                    <div class="card-body mx-auto"><span>Nouvel utilisateur?</span>
+                        <a href="{{ path('register') }}" class="text-link">Je crée mon compte</a>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </div>
+{% endblock %}

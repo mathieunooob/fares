@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block title %} Réinitialisation mot de passe{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/styleForgetPsswd.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron" >
+        <div class="container">
+            <h1>Mot de passe oublié</h1>
+            <p>Vous pourrez ici réinitialiser votre mot de passe ou tout simplement le changer</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-6 offset-lg-3"> <img src="{{ asset('img/logo.png') }}" class="img-fluid mr-3" alt="logo" width="90px" height="50px"/> <span class="font-weight-bold text-uppercase">guinot-tp signature</span></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h2>Définir le nouveau mot de passe</h2>
+                        <p>Vous avez besoin d'un mot de passe valide pour vous connecter à Guinot-tp Signature</p>
+                    </div>
+                    <form class="card-body" action="" method="POST">
+                        <div class="form-group row">
+                            <label class="card-text col-12 col-md-10 offset-md-1" for="email">Adresse mail: <i data-toggle="tooltip" data-placement="top" title="Renseignez le nom de votre adresse mail utilisée pour la création du compte" class='fas fa-question-circle'></i></label>
+                            <input class="col-12 col-md-10 offset-md-1 form-control" type="text" name="email" id="email" placeholder="Adresse mail ">
+                        </div>
+                        <div class="form-group row">
+                            <label class="card-text col-12 col-md-10 offset-md-1" for="newPassword">Nouveau mot de passe : <i data-toggle="tooltip" data-placement="top" title="Votre mot de passe doit contenir au minimum 8 caractères" class='fas fa-question-circle'></i></label>
+                            <input class="col-12 col-md-10 offset-md-1 form-control" type="password" name="newPassword" id="newPassword" placeholder="mot de passe">
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="card-text col-12 col-md-10 offset-md-1" for="verifNewPassword">Confirmer le mot de passe</label>
+                            <input class="col-12 col-md-10 offset-md-1 form-control" type="password" name="verifNewPassword" id="verifNewPassword" placeholder="vérification du mot de passe">
+                            <div class="col-12 col-md-10 offset-md-1 mt-4 text-right">
+                                <input type="checkbox" name="showPswd" id="showPswd" onclick="showPwd()">
+                                <label for="showPswd">Afficher le mot de passe</label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary rounded text-center">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('./js/forgetScript.js') }}"></script>
+{% endblock %}

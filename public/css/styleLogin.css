@@ -1,0 +1,50 @@
+body{
+    height: 100vh;
+}
+
+.jumbotron{
+    background-color: #4C4C4C;
+    color: white;
+}
+
+
+.btn{
+    padding: 1rem 2rem !important;
+    border-radius: 6px;
+    border: 4px solid transparent;
+}
+
+a:nth-child(1n):hover {
+    border: 4px solid #45B600 !important;
+    background-color: #fff !important;
+    font-weight: bold;
+    color: #4285F4 !important;
+}
+
+a:nth-child(2n):hover {
+    border: 4px solid #45B600 !important;
+    background-color: #fff !important;
+    font-weight: bold;
+    color: #FF3547!important;
+}
+
+#usernameI, #emailI, #passwordI{
+    position: relative;
+    z-index: 1;
+    left: -40px;
+    top: 40px;
+    color: #7B7B7B;
+    cursor:pointer;
+    width: 0;
+    font-size: 1.5em;
+}
+
+.text-link{
+    color:red;
+    font-size: 1.2em;
+}
+
+.text-link:hover {
+    color:red;
+    text-decoration: underline;
+}

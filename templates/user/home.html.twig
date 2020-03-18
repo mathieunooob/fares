@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %} Accueil {%  endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/homeStyle.css') }}">
+{% endblock %}
+{% block body %}
+    <main id="main" class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Sélectionner votre tâche</h1>
+            </div>
+        </div>
+        <ul class="list-group row">
+            <a href="{{ path('fastSend') }}" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Commencer par télécharger votre document et soumetter le pour le faire signer. Vous pourrez par la suite choisir qui doit le signer (vous, vous et d'autres, seulement d'autres) et pour quelle date le document doit être rempli.">
+                <li class="md-v-line">
+                    Procédure rapide
+                </li>
+                <i class="fas fa-stopwatch text-dark"></i>
+            </a>
+            <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Anticiper et téléchargez vos documents, créer votre liste de contacts, déterminer les blocs du document, la date de soumission ou de retour. Vous pourrez modifier vos modèles à tout moment.">
+                <li class="md-v-line">
+                    Préparer un document
+                </li>
+                <i class="fas fa-file-signature text-dark"></i>
+            </a>
+            <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser vos documents prêt à être soumis. Cliquez ici pour modifier un élément déjà préparé.">
+                <li class="md-v-line">
+                    Mes documents préparés
+                </li>
+                <i class="fas fa-shipping-fast text-dark"></i>
+            </a>
+            <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser vos documents soumis en attente de retour par vos contacts">
+                <li class="md-v-line">
+                    Documents soumis en attente de signature
+                </li>
+                <i class="fas fa-signature text-dark"></i>
+            </a>
+            <!-- modele -->
+            <a href="#" id="moreOptions" class="list-group-item col-12 col-md-6 offset-md-3 my-2">
+                <li class="md-v-line">
+                    Plus d'options
+                </li>
+                <i id="caret" class="far fa-caret-square-down text-dark"></i>
+            </a>
+            <div id="defaultHidden" class="d-none">
+                <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser tous vos contacts et créez en de nouveaux.">
+                    <li class="md-v-line">
+                        Mes contacts
+                    </li>
+                    <i class="far fa-id-card text-dark"></i>
+                </a>
+                <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser tous vos documents créés dûment remplis et signés.">
+                    <li class="md-v-line">
+                        Mes anciens modèles
+                    </li>
+                    <i class="fas fa-box-open text-dark"></i>
+                </a>
+                <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Vous pouvez disposer de plusieurs signatures. Visualisez-les ici et modifiez-les.">
+                    <li class="md-v-line">
+                        Mes signatures
+                    </li>
+                    <i class="fas fa-pen-nib text-dark"></i>
+                </a>
+                <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser le tableau de vos documents que vous avez préalablement soumis">
+                    <li class="md-v-line">
+                        Les documents que j'ai fait signer
+                    </li>
+                    <i class="fas fa-hand-holding text-dark"></i>
+                </a>
+                <a href="#" class="list-group-item col-12 col-md-6 offset-md-3 my-2" data-toggle="tooltip" data-placement="bottom" title="Visualiser le tableau des documents que l'on vous a demandé d'aviser.">
+                    <li class="md-v-line">
+                        Les documents que l'on m'a fait signer
+                    </li>
+                    <i class="far fa-handshake text-dark"></i>
+                </a>
+            </div>
+        </ul>
+    </main>
+{% endblock %}
+{% block javascripts %}
+    <script src="js/homeScript.js"></script>
+{% endblock %}

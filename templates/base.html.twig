@@ -1,12 +1,110 @@
+{% set actualPage = app.request.attributes.get('_route') %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleBase.css') }}">
+    <link href="bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="{{ asset('img/animated_favicon1.gif') }}" />
+    <script src="https://kit.fontawesome.com/e6a96ce674.js"></script>
+    {% block stylesheets %}
+    {% endblock %}
+    <title>{% block title%} {% endblock %} </title>
+</head>
+<body>
+        {# if isset session #}
+        <!--Main Navigation-->
+        <header>
+
+            <nav class="navbar navbar-expand-lg navbar-dark special-color fixed-top scrolling-navbar">
+
+                {% if actualPage == 'prepare' %}
+                <!-- Debut de l'ancre à masquer en fonction du mode de travail -->
+                <a id="navbar" class="navbar-brand openbtn" onclick="openNav()" href="#"> <i id="target" class="fas fa-caret-right mr-2"></i><strong>Outils</strong></a>
+                <!-- Fin de l'ancre à masquer en fonction du mode de travail -->
+                {% else %}
+                <!-- logo de substitution -->
+                    <a href="{{ path('home') }}">
+                        <img src="./img/logo.png" alt="logo-appli" style="width: 40px; height:40px">
+                    </a>
+                <!-- ./ logo de substitution -->
+                {%  endif %}
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-sm-2 mr-auto">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle {{ (actualPage == 'prepare') ? ' active' : '' }}" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-flip="true" href="#">Mes documents<span class="sr-only">(current)</span></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ path('fastSend') }}">Envoi rapide</a>
+                                <a class="dropdown-item" href="{{ path('prepare') }}">Préparer un document</a>
+                                <a class="dropdown-item" href="#">Mes documents préparés</a>
+                                <a class="dropdown-item" href="#">En attente de signature</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mes contacts</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Mes archives</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <a class="dropdown-item" href="#">Mes anciens modèles</a>
+                                <a class="dropdown-item" href="#">Mes signatures</a>
+                                <a class="dropdown-item" href="#">Mes documents envoyés à signer</a>
+                                <a class="dropdown-item" href="#">Les documents que l'on m'a fait signer</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accès compte utilisateur"><i class="fas fa-user"></i>NOM Prénom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accès à l'aide"><i class="fa fa-question-circle"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Nous contacter"><i class="far fa-envelope"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Déconnexion"><i class="fas fa-power-off"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- My sideBar-->
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+            <!-- ./ My sideBar-->
+        </header>
+        <!--Main Navigation-->
+        {# if isset session #}
+
+        {% block body %}
+        {% endblock %}
+
+
+    
+    <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/scriptBase.js') }}"></script>
+    <script src="js/"></script>
+    {% block javascripts %} {% endblock %}
+
+</body>
 </html>

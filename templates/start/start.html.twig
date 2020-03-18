@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %} Accueil {% endblock %}
+{% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/styleStart.css') }}">
+{% endblock %}
+{% block body%}
+      <div style="height: 100vh">
+            <div class="flex-center flex-column" >
+                  <h1 class="text-hide animated fadeIn mb-4">Pascal Guinot Travaux Publics</h1>
+                  <img src="./img/tp.png" alt="logo" style="width: 500px; height:250px;">
+                  <h5 class="animated fadeIn mt-3 mb-3 p-2">Bienvenue sur votre espace de gestion de signatures numériques</h5>
+                  <div class="d-flex flex-column align-items-center flex-md-row justify-content-md-between" id="homeButton">
+                        <button id="connectBtn" type="button" class="btn btn-primary animated fadeIn">
+                          Connexion
+                        </button>
+                        <button id="registratBtn" type="button" class="btn btn-secondary animated fadeIn">
+                          Inscription
+                        </button>
+                  </div>
+            </div>
+      </div>
+{% endblock %}
+

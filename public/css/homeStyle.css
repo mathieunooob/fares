@@ -1,0 +1,31 @@
+/* main*/
+.list-group-item + .list-group-item{
+    border-top-width: 1px;
+}
+
+.md-v-line {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(0,0,0,.125);
+    height: 50px;
+    top:0px;
+    left:54px;
+    list-style-type: none;
+    padding-left: 1.5em;
+    color: black;
+}
+
+main a:hover{
+     background-color: #37474F;
+}
+
+main a:hover li{
+    color:white !important;
+    border-left: 1px solid rgba(255,255,255,.45);
+}
+
+main a:hover i{
+    color:white !important;
+}
+/*new main*/

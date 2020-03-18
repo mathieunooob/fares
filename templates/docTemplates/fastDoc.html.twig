@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{%  block title %}
+Procédure rapide
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/fastStyle.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+{% endblock %}
+{% block body %}
+
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 mt-5 bg-light rounded">
+
+                <div class="row">
+                    <div class="col-12" style="padding-left:0; padding-right:0">
+                        <h1>Démarrer en ajoutant votre document</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-10 offset-md-1 my-4" style="position:relative;">
+                        <input class="btn btn-success" type="file" name="file" id="file">
+                        <i id="upload" class="far fa-question-circle d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="Mettez en ligne le document qui doit être signé. Guinot-Tp Signature est compatible avec les fichiers PDF, doc(x), Txt et autres. Si vous utilisez un Pdf, le document ressemble exactement à ce qui est attendu. Les fichiers doc(x) complexes peuvent cependant changer durant la conversion."></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="col-12 col-md-10 offset-md-1 px-3">Qui doit signer <i class="far fa-question-circle d-none d-md-block" style="position:absolute; top:5px; left:125px;" data-toggle="tooltip" data-placement="bottom" title="Merci de choisir qui doit signer. Si vous êtes le seul à devoir signer, cliquez sur 'Seulement moi'. Si vous ne devez pas signer, cliquez sur 'Seulement d'autres personnes'"></i> </p>
+                </div>
+                <div class="row px-lg-4">
+                    <div class="col-12 col-lg-10 offset-lg-1">
+                        <div class="row pb-3">
+                            <button id="meOthers" class="col-8 offset-2 col-lg-4 offset-lg-0 btnClick" > Moi + d'autres personnes </button>
+                            <button id="me" class="col-8 offset-2 col-lg-4 offset-lg-0 hoverable" >Seulement moi </button>
+                            <button id="others" class="col-8 offset-2 col-lg-4 offset-lg-0 hoverable" > Seulement d'autres personnes </button>
+                        </div>
+                    </div>
+                </div>
+                <form class="row px-4 mt-3">
+                    <p class="col-12 col-md-10 offset-md-1 px-3">Votre mail<i class="far fa-question-circle d-none d-md-block" style="position:absolute; top:5px; left:125px;" data-toggle="tooltip" data-placement="bottom" title="Vérifiez qu'il s'agisse bien de votre adresse mail."></i> </p>
+                    <input type="email" name="email" id="email" class="col-12 col-md-10 offset-md-1 mb-4 form-control">
+                    <p class="col-12 col-md-10 offset-md-1 subsid">Contact(s)<i class="far fa-question-circle d-none d-md-block" style="position:absolute; top:5px; left:120px;" data-toggle="tooltip" data-placement="bottom" title="Merci d'ajouter l'adresse mail des personnes qui doivent recevoir ou signer une copie de ces documents."></i> </p>
+                    <input type="text" name="username" id="username" class="col-12 col-md-10 offset-md-1 mb-4 form-control subsid">
+                    <div class="col-12 subsid">
+                        <div class="row">
+                            <p class="col-12 col-md-10 offset-md-1 ">Message<i class="far fa-question-circle d-none d-md-block" style="position:absolute; top:5px; left:120px;" data-toggle="tooltip" data-placement="bottom" title="Ajoutez un message en option qui aparaîtra dans le mail pour votre contact."></i> </p>
+                        </div>
+                        <div class="row">
+                            <textarea name="message" id="message" cols="30" rows="5" class="col-12 col-md-10 offset-md-1 mb-4 form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 subsid">
+                        <div class="row">
+                            <p class="col-12 col-md-10 offset-md-1 ">Date d'échéance</p>
+                        </div>
+                        <div class="row" >
+                            <input type='text' id='datepicker' class="form-control col-12 col-md-10 offset-md-1 text-center" data-provide="datepicker" >
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 text-center">
+                                <a href="#" id="preparDoc">Préparer le document</a>
+                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:110px;" data-toggle="tooltip" data-placement="bottom" title="Préparer le document avec les champs d'entrée. Vous pourrez le retrouver ultérieurment dans vos modèles et le soumettre à ses destinataires."></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 mb-5 text-center">
+                                <a href="#" id="sentDoc">Envoyer le document</a>
+                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:110px;" data-toggle="tooltip" data-placement="bottom" title="Envoyer le document directement sans préparation. Cela n'est pas recommandé pour les destinataires"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/fastScript.js') }}"></script>
+    <script >
+        $(document).ready(function() {
+           var year = (new Date).getFullYear();
+           $('.date').datepicker({
+             format: "dd-mm-yyyy",
+             autoclose:true,
+             minDate: new Date(year, 0, 1),
+             maxDate:new Date(year, 11, 31)
+           });
+         });
+     </script>
+
+{% endblock %}
