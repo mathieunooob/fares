@@ -34,6 +34,9 @@ button:hover{
     color: #E0E0E0;
 }
 
+.btn {
+    margin: 0 !important;
+}
 
 .btnClick{
     background-color: #3F729B;
@@ -69,6 +72,48 @@ button:hover{
     background-color: #E0E0E0 !important;
     border: 4px solid #00C851;
 }
+
+/*Modal*/
+
+#dismiss{
+    background-color: #ff3547 !important;
+    width: 20%;
+    color: white;
+    border-radius: 7px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 4px solid #ff3547
+}
+
+#dismiss:hover{
+    background-color: white !important;
+    border: 4px solid #45B600;
+    border-radius: 7px;
+    color: #ff3547;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#continued{
+    background-color: #4285F4 !important;
+    width: 20%;
+    color: white;
+    border-radius: 7px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 4px solid #4285F4
+}
+
+#continued:hover{
+    background-color: white !important;
+    border: 4px solid #45B600;
+    border-radius: 7px;
+    color: #4285F4;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/*Modal*/
 
 @media screen and (min-height: 768px) {
     #meOthers{

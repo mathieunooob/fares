@@ -3,10 +3,26 @@
 Procédure rapide
 {% endblock %}
 {% block stylesheets %}
+    {# main style #}
     <link rel="stylesheet" href="{{ asset('css/fastStyle.css') }}">
+    {# ./main style #}
+    {# Modal Bootstrap-fileinput #}
+    <link rel="shortcut icon" href="img/animated_favicon1.gif" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/plugins/piexif.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/plugins/sortable.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/plugins/purify.min.js" type="text/javascript"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
+    <script src="./js/bootstrap-fileinput-fr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/themes/fas/theme.min.js"></script>
+    {# ./Modal Bootstrap-fileinput #}
+    {# DatePicker #}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+    {# ./DatePicker #}
 {% endblock %}
 {% block body %}
 
@@ -20,10 +36,39 @@ Procédure rapide
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-10 offset-md-1 my-4" style="position:relative;">
-                        <input class="btn btn-success" type="file" name="file" id="file">
+                    <div class="col-12 col-md-10 offset-md-1 py-5">
+                    <button class="btn btn-success col-12" style="position: relative;" type="button" data-toggle="modal" data-target="#insertDocModal">Insérer votre document
                         <i id="upload" class="far fa-question-circle d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="Mettez en ligne le document qui doit être signé. Guinot-Tp Signature est compatible avec les fichiers PDF, doc(x), Txt et autres. Si vous utilisez un Pdf, le document ressemble exactement à ce qui est attendu. Les fichiers doc(x) complexes peuvent cependant changer durant la conversion."></i>
+                    </button>
+                </div>
+                {# Modal #}
+                <div class="modal fade" id="insertDocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-fluid" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" >Insérer votre document</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body d-flex justify-content-center">
+                        <form  class="d-flex flex-column" action="" method="POST" enctype="multipart/form-data">
+                            {#<label class="text-center mb-5 text-uppercase" for="docLoader">Téléverser votre document</label>
+                            <input type="file" name="docLoader" id="docLoader" class="mb-4">
+                            <canvas id="imageCanvas" ></canvas> #}
+                            <div class="file-loading">
+                                <input type="file" id="input-boot-file" name="input-boot-file" multiple />
+                            </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer d-flex flex-column flex-sm-row justify-content-sm-around">
+                        <button id="dismiss" type="button" class="btn btn-secondary animated fadeIn waves-effect waves-light" data-dismiss="modal">Annuler</button>
+                        <button id="continued" type="button" class="btn btn-primary animated fadeIn waves-effect waves-light">Continuer</button>
+                      </div>
                     </div>
+                  </div>
+                </div>
+                {# ./ Modal#}
                 </div>
                 <div class="row">
                     <p class="col-12 col-md-10 offset-md-1 px-3">Qui doit signer <i class="far fa-question-circle d-none d-md-block" style="position:absolute; top:5px; left:125px;" data-toggle="tooltip" data-placement="bottom" title="Merci de choisir qui doit signer. Si vous êtes le seul à devoir signer, cliquez sur 'Seulement moi'. Si vous ne devez pas signer, cliquez sur 'Seulement d'autres personnes'"></i> </p>
@@ -60,17 +105,17 @@ Procédure rapide
                     </div>
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 text-center">
+                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 text-center text-uppercase">
                                 <a href="#" id="preparDoc">Préparer le document</a>
-                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:110px;" data-toggle="tooltip" data-placement="bottom" title="Préparer le document avec les champs d'entrée. Vous pourrez le retrouver ultérieurment dans vos modèles et le soumettre à ses destinataires."></i>
+                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:90px;" data-toggle="tooltip" data-placement="bottom" title="Préparer le document avec les champs d'entrée. Vous pourrez le retrouver ultérieurment dans vos modèles et le soumettre à ses destinataires."></i>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 mb-5 text-center">
+                            <div class="col-12 pr-0 pl-0 my-3 col-sm-10 offset-sm-1 col-lg-10 offset-lg-1 mb-5 text-center text-uppercase">
                                 <a href="#" id="sentDoc">Envoyer le document</a>
-                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:110px;" data-toggle="tooltip" data-placement="bottom" title="Envoyer le document directement sans préparation. Cela n'est pas recommandé pour les destinataires"></i>
+                                <i class="far fa-question-circle d-none d-lg-block text-white" style="position:absolute; top:12px; left:90px;" data-toggle="tooltip" data-placement="bottom" title="Envoyer le document directement sans préparation. Cela n'est pas recommandé pour les destinataires"></i>
                             </div>
                         </div>
                     </div>
@@ -82,16 +127,5 @@ Procédure rapide
 
 {% block javascripts %}
     <script src="{{ asset('js/fastScript.js') }}"></script>
-    <script >
-        $(document).ready(function() {
-           var year = (new Date).getFullYear();
-           $('.date').datepicker({
-             format: "dd-mm-yyyy",
-             autoclose:true,
-             minDate: new Date(year, 0, 1),
-             maxDate:new Date(year, 11, 31)
-           });
-         });
-     </script>
 
 {% endblock %}
